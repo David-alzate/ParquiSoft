@@ -1,0 +1,1 @@
+package co.edu.uco.parquisoft.generales.crosscutting;
