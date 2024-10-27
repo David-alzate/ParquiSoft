@@ -1,1 +1,0 @@
-package co.edu.uco.parquisoft.generales.infrastructure.primaryadapters.controller.rest;
