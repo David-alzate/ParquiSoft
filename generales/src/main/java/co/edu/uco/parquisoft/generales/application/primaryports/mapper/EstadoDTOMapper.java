@@ -15,6 +15,8 @@ public interface EstadoDTOMapper {
 
 	EstadoDomain toDomain(EstadoDTO dto);
 
+	EstadoDTO toDto(EstadoDomain stateDomain);
+
 	List<EstadoDTO> toDtoCollection(List<EstadoDomain> domains);
 
 }
