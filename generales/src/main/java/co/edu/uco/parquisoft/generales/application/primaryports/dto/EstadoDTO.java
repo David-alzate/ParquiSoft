@@ -28,7 +28,7 @@ public final class EstadoDTO {
 		return id;
 	}
 
-	private void setId(UUID id) {
+	public void setId(UUID id) {
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 	}
 
@@ -36,7 +36,7 @@ public final class EstadoDTO {
 		return name;
 	}
 
-	private void setName(String name) {
+	public void setName(String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
 

@@ -7,17 +7,18 @@ import co.edu.uco.parquisoft.generales.domain.Domain;
 import java.util.UUID;
 
 public class TipoIdentificacionDomain extends Domain {
-    private String tipo;
+	private String tipo;
 
-    protected TipoIdentificacionDomain(final UUID id, final String tipo) {
-        super(id);
-        setTipo(tipo);
-    }
-    private void setTipo(String tipo) {
-        this.tipo = TextHelper.applyTrim(tipo);
-    }
+	public TipoIdentificacionDomain(final UUID id, final String tipo) {
+		super(id);
+		setTipo(tipo);
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
+	private void setTipo(String tipo) {
+		this.tipo = TextHelper.applyTrim(tipo);
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
 }
