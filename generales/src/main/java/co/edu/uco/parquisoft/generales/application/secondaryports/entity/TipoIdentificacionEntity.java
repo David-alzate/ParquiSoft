@@ -18,24 +18,24 @@ public final class TipoIdentificacionEntity {
     private UUID id;
 
     @Column(name = "tipo")
-    private String tipo;
+    private String name;
 
     public TipoIdentificacionEntity() {
         setId(UUIDHelper.getDefault());
-        setTipo(TextHelper.EMPTY);
+        setName(TextHelper.EMPTY);
     }
 
-    public TipoIdentificacionEntity(final UUID id, final String tipo) {
+    public TipoIdentificacionEntity(final UUID id, final String name) {
         setId(id);
-        setTipo(tipo);
+        setName(name);
     }
 
     static final TipoIdentificacionEntity create() {
         return new TipoIdentificacionEntity();
     }
 
-    public static final TipoIdentificacionEntity create(final UUID id, final String tipo) {
-        return new TipoIdentificacionEntity(id, tipo);
+    public static final TipoIdentificacionEntity create(final UUID id, final String name) {
+        return new TipoIdentificacionEntity(id, name);
     }
 
     public static final TipoIdentificacionEntity create(final UUID id) {
@@ -50,11 +50,11 @@ public final class TipoIdentificacionEntity {
         this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getName() {
+        return name;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = TextHelper.applyTrim(tipo);
+    public void setName(String name) {
+        this.name = TextHelper.applyTrim(name);
     }
 }

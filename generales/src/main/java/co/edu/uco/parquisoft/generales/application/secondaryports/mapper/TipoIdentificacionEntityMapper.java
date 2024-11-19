@@ -1,8 +1,6 @@
 package co.edu.uco.parquisoft.generales.application.secondaryports.mapper;
 
-import co.edu.uco.parquisoft.generales.application.secondaryports.entity.EstadoEntity;
 import co.edu.uco.parquisoft.generales.application.secondaryports.entity.TipoIdentificacionEntity;
-import co.edu.uco.parquisoft.generales.domain.estado.EstadoDomain;
 import co.edu.uco.parquisoft.generales.domain.tipoidentificacion.TipoIdentificacionDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

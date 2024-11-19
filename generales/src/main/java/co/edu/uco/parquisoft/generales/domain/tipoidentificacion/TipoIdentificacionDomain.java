@@ -1,24 +1,24 @@
 package co.edu.uco.parquisoft.generales.domain.tipoidentificacion;
 
 import co.edu.uco.parquisoft.generales.crosscutting.helpers.TextHelper;
-import co.edu.uco.parquisoft.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.parquisoft.generales.domain.Domain;
 
 import java.util.UUID;
 
 public class TipoIdentificacionDomain extends Domain {
-	private String tipo;
+	
+	private String name;
 
-	public TipoIdentificacionDomain(final UUID id, final String tipo) {
+	public TipoIdentificacionDomain(final UUID id, final String name) {
 		super(id);
-		setTipo(tipo);
+		setName(name);
 	}
 
-	private void setTipo(String tipo) {
-		this.tipo = TextHelper.applyTrim(tipo);
+	public void setName(String name) {
+		this.name = TextHelper.applyTrim(name);
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getName() {
+		return name;
 	}
 }

@@ -34,8 +34,8 @@ public class TipoIdentificacionRepositoryCustomImpl implements TipoIdentificacio
 					predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
 				}
 
-				if (!TextHelper.isEmpty(filter.getTipo())) {
-					predicates.add(criteriaBuilder.equal(result.get("tipo"), filter.getTipo()));
+				if (!TextHelper.isEmpty(filter.getName())) {
+					predicates.add(criteriaBuilder.equal(result.get("tipo"), filter.getName()));
 				}
 			}
 
