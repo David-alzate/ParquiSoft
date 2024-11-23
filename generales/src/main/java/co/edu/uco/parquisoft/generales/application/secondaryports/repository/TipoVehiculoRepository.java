@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import co.edu.uco.parquisoft.generales.application.secondaryports.entity.TipoVehiculoEntity;
 
 @Repository
-public interface TipoVehiculoRepository extends JpaRepository<TipoVehiculoEntity, UUID> {
+public interface TipoVehiculoRepository extends JpaRepository<TipoVehiculoEntity, UUID>, TipoVehiculoRepositoryCustom{
 
 }
