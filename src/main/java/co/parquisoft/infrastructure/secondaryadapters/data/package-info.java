@@ -1,0 +1,1 @@
+package co.parquisoft.infrastructure.secondaryadapters.data;
