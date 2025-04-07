@@ -4,7 +4,7 @@ import co.parquisoft.crosscutting.exception.enums.Layer;
 import co.parquisoft.crosscutting.helpers.ObjectHelper;
 import co.parquisoft.crosscutting.helpers.TextHelper;
 
-public class ParquiSoftException extends RuntimeException{
+public class ParquiSoftException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     private String userMessage;
     private Layer layer;

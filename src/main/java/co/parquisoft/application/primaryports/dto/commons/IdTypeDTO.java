@@ -7,37 +7,41 @@ import java.util.UUID;
 
 public final class IdTypeDTO {
 
-	private UUID id;
-	private String name;
+    private UUID id;
+    private String name;
 
-	public IdTypeDTO() {
-		setId(UUIDHelper.getDefault());
-		setName(TextHelper.EMPTY);
-	}
+    public IdTypeDTO() {
+        setId(UUIDHelper.getDefault());
+        setName(TextHelper.EMPTY);
+    }
 
-	public IdTypeDTO(UUID id, String name) {
-		setId(id);
-		setName(name);
-	}
+    public IdTypeDTO(UUID id, String name) {
+        setId(id);
+        setName(name);
+    }
 
-	public static IdTypeDTO create() {
-		return new IdTypeDTO();
-	}
+    public static IdTypeDTO create(UUID id, String name) {
+        return new IdTypeDTO(id, name);
+    }
 
-	public UUID getId() {
-		return id;
-	}
+    public static IdTypeDTO create() {
+        return new IdTypeDTO();
+    }
 
-	public void setId(UUID id) {
-		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
-	}
+    public UUID getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(UUID id) {
+        this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+    }
 
-	public void setName(String name) {
-		this.name = TextHelper.applyTrim(name);
-	}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = TextHelper.applyTrim(name);
+    }
 
 }
