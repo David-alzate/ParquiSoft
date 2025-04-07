@@ -1,6 +1,6 @@
 package co.parquisoft.application.primaryports.mapper.commons;
 
-import co.parquisoft.application.primaryports.dto.commons.StatusTO;
+import co.parquisoft.application.primaryports.dto.commons.StatusDTO;
 import co.parquisoft.domain.commons.status.StatusDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -12,10 +12,10 @@ public interface StatusDTOMapper {
 
     StatusDTOMapper INSTANCE = Mappers.getMapper(StatusDTOMapper.class);
 
-    StatusDomain toDomain(StatusTO dto);
+    StatusDomain toDomain(StatusDTO dto);
 
-    StatusTO toDto(StatusDomain domain);
+    StatusDTO toDto(StatusDomain domain);
 
-    List<StatusTO> toDtoCollection(List<StatusDomain> domains);
+    List<StatusDTO> toDtoCollection(List<StatusDomain> domains);
 
 }

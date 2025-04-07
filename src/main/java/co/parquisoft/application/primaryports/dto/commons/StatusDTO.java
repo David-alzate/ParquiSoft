@@ -5,27 +5,27 @@ import co.parquisoft.crosscutting.helpers.UUIDHelper;
 
 import java.util.UUID;
 
-public final class StatusTO {
+public final class StatusDTO {
 
     private UUID id;
     private String name;
 
-    public StatusTO() {
+    public StatusDTO() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
     }
 
-    public StatusTO(UUID id, String name) {
+    public StatusDTO(UUID id, String name) {
         setId(id);
         setName(name);
     }
 
-    public static StatusTO create(UUID id, String name) {
-        return new StatusTO(id, name);
+    public static StatusDTO create(UUID id, String name) {
+        return new StatusDTO(id, name);
     }
 
-    public static StatusTO create() {
-        return new StatusTO();
+    public static StatusDTO create() {
+        return new StatusDTO();
     }
 
     public UUID getId() {

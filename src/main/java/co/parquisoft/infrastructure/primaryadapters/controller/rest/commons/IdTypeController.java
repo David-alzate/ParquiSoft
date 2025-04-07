@@ -3,42 +3,41 @@ package co.parquisoft.infrastructure.primaryadapters.controller.rest.commons;
 import co.parquisoft.application.primaryports.dto.commons.IdTypeDTO;
 import co.parquisoft.application.primaryports.interactor.commons.idtype.GetIdTypeInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
-import co.parquisoft.infrastructure.primaryadapters.controller.response.commons.IdTypeResponseResponse;
+import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
+import co.parquisoft.infrastructure.primaryadapters.controller.response.commons.IdTypeResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/general/api/v1/tipoidentificacion")
+@RequestMapping("/api/v1/idtype")
 public class IdTypeController {
 
-    private final GetIdTypeInteractor consultarTIdentificacionInteractor;
+    private final GetIdTypeInteractor getIdTypeInteractor;
 
-    public IdTypeController(GetIdTypeInteractor consultarTIdentificacionInteractor) {
-        this.consultarTIdentificacionInteractor = consultarTIdentificacionInteractor;
+    public IdTypeController(GetIdTypeInteractor getIdTypeInteractor) {
+        this.getIdTypeInteractor = getIdTypeInteractor;
     }
 
     @GetMapping
-    public ResponseEntity<IdTypeResponseResponse> consultarTipoIdentificaciones() {
-        var httpStatusCode = HttpStatus.ACCEPTED;
-        var tipoIdentificacionResponse = new IdTypeResponseResponse();
-
+    public ResponseEntity<IdTypeResponse> getIdTypes() {
         try {
-            var tipoIdentificacionDTO = IdTypeDTO.create();
-            tipoIdentificacionResponse.setDatos(consultarTIdentificacionInteractor.execute(tipoIdentificacionDTO));
-            tipoIdentificacionResponse.getMensajes().add("Tipos de Identificación consultados exitosamente");
-
-        } catch (final ParquiSoftException excepcion) {
-            httpStatusCode = HttpStatus.BAD_REQUEST;
-            tipoIdentificacionResponse.getMensajes().add(excepcion.getUserMessage());
-        } catch (final Exception excepcion) {
-            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los tipos de identificación";
-            tipoIdentificacionResponse.getMensajes().add(mensajeUsuario);
+            IdTypeDTO idTypeDTO = IdTypeDTO.create();
+            List<IdTypeDTO> data = getIdTypeInteractor.execute(idTypeDTO);
+            var response = IdTypeResponse.build(List.of("Tipos de Identificación consultados exitosamente"), data);
+            return GenerateResponse.generateSuccessResponseWithData(response);
+        } catch (final ParquiSoftException ex) {
+            var response = IdTypeResponse.build(List.of(ex.getUserMessage()), List.of());
+            return GenerateResponse.generateBadRequestResponseWithData(response);
+        } catch (final Exception ex) {
+            var userMessage = "Se ha presentado un problema tratando de consultar los tipos de identificación";
+            var response = IdTypeResponse.build(List.of(userMessage), List.of());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        return new ResponseEntity<>(tipoIdentificacionResponse, httpStatusCode);
     }
+
 }

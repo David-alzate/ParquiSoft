@@ -1,8 +1,9 @@
 package co.parquisoft.infrastructure.primaryadapters.controller.rest.commons;
 
-import co.parquisoft.application.primaryports.dto.commons.StatusTO;
+import co.parquisoft.application.primaryports.dto.commons.StatusDTO;
 import co.parquisoft.application.primaryports.interactor.commons.status.GetStatusInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
+import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.commons.StatusResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,36 +11,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/general/api/v1/estados")
+@RequestMapping("/api/v1/status")
 public class StatusController {
 
-    private final GetStatusInteractor consultarEstadoInteractor;
+    private final GetStatusInteractor getStatusInteractor;
 
-    public StatusController(GetStatusInteractor consultarEstadoInteractor) {
-        this.consultarEstadoInteractor = consultarEstadoInteractor;
+    public StatusController(GetStatusInteractor getStatusInteractor) {
+        this.getStatusInteractor = getStatusInteractor;
     }
 
     @GetMapping
-    public ResponseEntity<StatusResponse> consultarEstados() {
-        var httpStatusCode = HttpStatus.ACCEPTED;
-        var estadoResponse = new StatusResponse();
-
+    public ResponseEntity<StatusResponse> getIdTypes() {
         try {
-            var estadoDTO = StatusTO.create();
-            estadoResponse.setDatos(consultarEstadoInteractor.execute(estadoDTO));
-            estadoResponse.getMensajes().add("Estados consultados exitosamente");
-
-        } catch (final ParquiSoftException excepcion) {
-            httpStatusCode = HttpStatus.BAD_REQUEST;
-            estadoResponse.getMensajes().add(excepcion.getUserMessage());
-        } catch (final Exception excepcion) {
-            httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var mensajeUsuario = "Se ha presentado un problema tratando de consultar los estados";
-            estadoResponse.getMensajes().add(mensajeUsuario);
+            StatusDTO idTypeDTO = StatusDTO.create();
+            List<StatusDTO> data = getStatusInteractor.execute(idTypeDTO);
+            var response = StatusResponse.build(List.of("Estados consultados exitosamente"), data);
+            return GenerateResponse.generateSuccessResponseWithData(response);
+        } catch (final ParquiSoftException ex) {
+            var response = StatusResponse.build(List.of(ex.getUserMessage()), List.of());
+            return GenerateResponse.generateBadRequestResponseWithData(response);
+        } catch (final Exception ex) {
+            var userMessage = "Se ha presentado un problema tratando de consultar los estados";
+            var response = StatusResponse.build(List.of(userMessage), List.of());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        return new ResponseEntity<>(estadoResponse, httpStatusCode);
     }
 
 }
