@@ -1,10 +1,10 @@
 package co.parquisoft.application.primaryports.interactor.commons.status;
 
+import co.parquisoft.application.primaryports.dto.commons.StatusDTO;
+import co.parquisoft.application.primaryports.interactor.InteractorWithoutInput;
+
 import java.util.List;
 
-import co.parquisoft.application.primaryports.dto.commons.StatusDTO;
-import co.parquisoft.application.primaryports.interactor.InteractorWithReturn;
-
-public interface GetStatusInteractor extends InteractorWithReturn<StatusDTO, List<StatusDTO>> {
+public interface GetStatusInteractor extends InteractorWithoutInput<List<StatusDTO>> {
 
 }

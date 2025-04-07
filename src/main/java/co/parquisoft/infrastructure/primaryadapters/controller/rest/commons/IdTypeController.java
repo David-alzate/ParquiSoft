@@ -26,14 +26,13 @@ public class IdTypeController {
     @GetMapping
     public ResponseEntity<IdTypeResponse> getIdTypes() {
         try {
-            IdTypeDTO idTypeDTO = IdTypeDTO.create();
-            List<IdTypeDTO> data = getIdTypeInteractor.execute(idTypeDTO);
+            List<IdTypeDTO> data = getIdTypeInteractor.execute();
             var response = IdTypeResponse.build(List.of("Tipos de Identificación consultados exitosamente"), data);
             return GenerateResponse.generateSuccessResponseWithData(response);
-        } catch (final ParquiSoftException ex) {
-            var response = IdTypeResponse.build(List.of(ex.getUserMessage()), List.of());
+        } catch (final ParquiSoftException exception) {
+            var response = IdTypeResponse.build(List.of(exception.getUserMessage()), List.of());
             return GenerateResponse.generateBadRequestResponseWithData(response);
-        } catch (final Exception ex) {
+        } catch (final Exception exception) {
             var userMessage = "Se ha presentado un problema tratando de consultar los tipos de identificación";
             var response = IdTypeResponse.build(List.of(userMessage), List.of());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);

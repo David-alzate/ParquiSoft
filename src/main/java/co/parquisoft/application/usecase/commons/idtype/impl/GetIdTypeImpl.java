@@ -1,5 +1,6 @@
 package co.parquisoft.application.usecase.commons.idtype.impl;
 
+import co.parquisoft.application.secondaryports.entity.commons.IdTypeEntity;
 import co.parquisoft.application.secondaryports.mapper.commons.IdTypeEntityMapper;
 import co.parquisoft.application.secondaryports.repository.commons.IdTypeRepository;
 import co.parquisoft.application.usecase.commons.idtype.GetIdType;
@@ -18,9 +19,8 @@ public class GetIdTypeImpl implements GetIdType {
     }
 
     @Override
-    public List<IdTypeDomain> execute(IdTypeDomain domain) {
-        var tipoIdentificacionEntity = IdTypeEntityMapper.INSTANCE.toEntity(domain);
-        var resultadosEntity = tipoIdentificacionRepository.findByFilter(tipoIdentificacionEntity);
-        return IdTypeEntityMapper.INSTANCE.toDomainCollection(resultadosEntity);
+    public List<IdTypeDomain> execute() {
+        List<IdTypeEntity> resultsEntity = tipoIdentificacionRepository.findAll();
+        return IdTypeEntityMapper.INSTANCE.toDomainCollection(resultsEntity);
     }
 }

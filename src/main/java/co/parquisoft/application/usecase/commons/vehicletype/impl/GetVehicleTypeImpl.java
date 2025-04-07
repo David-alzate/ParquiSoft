@@ -12,10 +12,9 @@ import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
 @Service
 public class GetVehicleTypeImpl implements GetVehicleType {
 
-	private VehicleTypeRepository tipoVehiculoRepository;
+	private final VehicleTypeRepository tipoVehiculoRepository;
 
 	public GetVehicleTypeImpl(VehicleTypeRepository tipoVehiculoRepository) {
-		super();
 		this.tipoVehiculoRepository = tipoVehiculoRepository;
 	}
 

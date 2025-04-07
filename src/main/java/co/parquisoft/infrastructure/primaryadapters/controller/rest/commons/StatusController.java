@@ -26,8 +26,7 @@ public class StatusController {
     @GetMapping
     public ResponseEntity<StatusResponse> getIdTypes() {
         try {
-            StatusDTO idTypeDTO = StatusDTO.create();
-            List<StatusDTO> data = getStatusInteractor.execute(idTypeDTO);
+            List<StatusDTO> data = getStatusInteractor.execute();
             var response = StatusResponse.build(List.of("Estados consultados exitosamente"), data);
             return GenerateResponse.generateSuccessResponseWithData(response);
         } catch (final ParquiSoftException ex) {

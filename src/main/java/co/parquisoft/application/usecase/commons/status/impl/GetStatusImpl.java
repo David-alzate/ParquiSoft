@@ -1,5 +1,6 @@
 package co.parquisoft.application.usecase.commons.status.impl;
 
+import co.parquisoft.application.secondaryports.entity.commons.StatusEntity;
 import co.parquisoft.application.secondaryports.mapper.commons.StatusEntityMapper;
 import co.parquisoft.application.secondaryports.repository.commons.StatusRepository;
 import co.parquisoft.application.usecase.commons.status.GetStatus;
@@ -18,10 +19,9 @@ public class GetStatusImpl implements GetStatus {
     }
 
     @Override
-    public List<StatusDomain> execute(StatusDomain domain) {
-        var estadoEntity = StatusEntityMapper.INSTANCE.toEntity(domain);
-        var resultadosEntity = estadoRepository.findByFilter(estadoEntity);
-        return StatusEntityMapper.INSTANCE.toDomainCollection(resultadosEntity);
+    public List<StatusDomain> execute() {
+        List<StatusEntity> resultsEntity = estadoRepository.findAll();
+        return StatusEntityMapper.INSTANCE.toDomainCollection(resultsEntity);
     }
 
 }
