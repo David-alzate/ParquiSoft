@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import co.parquisoft.application.secondaryports.entity.commons.StatusEntity;
 
 @Repository
-public interface StatusRepository extends JpaRepository<StatusEntity, UUID>, StatusRepositoryCustom {
+public interface StatusRepository extends JpaRepository<StatusEntity, UUID> {
 
 }

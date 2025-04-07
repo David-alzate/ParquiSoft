@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface IdTypeRepository extends JpaRepository<IdTypeEntity, UUID>, IdTypeRepositoryCustom {
+public interface IdTypeRepository extends JpaRepository<IdTypeEntity, UUID> {
 }
