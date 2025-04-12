@@ -5,9 +5,13 @@ import co.parquisoft.application.primaryports.interactor.commons.vehicletype.Get
 import co.parquisoft.application.primaryports.mapper.commons.VehicleTypeDTOMapper;
 import co.parquisoft.application.usecase.commons.vehicletype.GetVehicleType;
 import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class GetVehicleTypeInteractorImpl implements GetVehicleTypeInteractor {
 
     private final GetVehicleType getVehicleType;
