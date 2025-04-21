@@ -28,7 +28,7 @@ public final class IdTypeEntity {
         setName(name);
     }
 
-    static IdTypeEntity create() {
+    public static IdTypeEntity create() {
         return new IdTypeEntity();
     }
 
