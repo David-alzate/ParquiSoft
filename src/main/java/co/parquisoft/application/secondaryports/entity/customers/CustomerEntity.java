@@ -1,4 +1,4 @@
-package co.parquisoft.application.secondaryports.entity.customer;
+package co.parquisoft.application.secondaryports.entity.customers;
 
 import co.parquisoft.application.secondaryports.entity.commons.IdTypeEntity;
 import co.parquisoft.crosscutting.helpers.TextHelper;
