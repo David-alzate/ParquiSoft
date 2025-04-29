@@ -1,4 +1,4 @@
-package co.parquisoft.domain.commons.tipovehiculo;
+package co.parquisoft.domain.commons.vehicletype;
 
 import java.util.UUID;
 

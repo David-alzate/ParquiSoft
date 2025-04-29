@@ -4,7 +4,7 @@ import co.parquisoft.application.primaryports.dto.commons.VehicleTypeDTO;
 import co.parquisoft.application.primaryports.interactor.commons.vehicletype.GetVehicleTypeInteractor;
 import co.parquisoft.application.primaryports.mapper.commons.VehicleTypeDTOMapper;
 import co.parquisoft.application.usecase.commons.vehicletype.GetVehicleType;
-import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
+import co.parquisoft.domain.commons.vehicletype.VehicleTypeDomain;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

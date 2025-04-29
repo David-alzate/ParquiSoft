@@ -1,7 +1,7 @@
 package co.parquisoft.application.usecase.commons.vehicletype;
 
 import co.parquisoft.application.usecase.UseCaseWithoutInput;
-import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
+import co.parquisoft.domain.commons.vehicletype.VehicleTypeDomain;
 
 import java.util.List;
 

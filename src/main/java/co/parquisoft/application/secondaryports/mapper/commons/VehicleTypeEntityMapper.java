@@ -1,7 +1,7 @@
 package co.parquisoft.application.secondaryports.mapper.commons;
 
 import co.parquisoft.application.secondaryports.entity.commons.VehicleTypeEntity;
-import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
+import co.parquisoft.domain.commons.vehicletype.VehicleTypeDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

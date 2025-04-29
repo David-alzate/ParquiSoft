@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import co.parquisoft.application.primaryports.dto.commons.VehicleTypeDTO;
-import co.parquisoft.domain.commons.tipovehiculo.VehicleTypeDomain;
+import co.parquisoft.domain.commons.vehicletype.VehicleTypeDomain;
 
 @Mapper
 public interface VehicleTypeDTOMapper {
