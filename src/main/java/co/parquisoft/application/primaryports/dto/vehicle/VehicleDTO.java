@@ -25,11 +25,11 @@ public class VehicleDTO {
         setPlate(plate);
     }
 
-    public final VehicleDTO create(UUID id, VehicleTypeDTO vehicleType, String plate) {
+    public static VehicleDTO create(UUID id, VehicleTypeDTO vehicleType, String plate) {
         return new VehicleDTO(id, vehicleType, plate);
     }
 
-    public final VehicleDTO create() {
+    public static VehicleDTO create() {
         return new VehicleDTO();
     }
 

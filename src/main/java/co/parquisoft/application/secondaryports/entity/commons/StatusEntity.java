@@ -18,7 +18,7 @@ public final class StatusEntity {
     private UUID id;
     private String name;
 
-    StatusEntity() {
+    public StatusEntity() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
     }
