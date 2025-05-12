@@ -4,11 +4,11 @@ import co.parquisoft.domain.Domain;
 
 import java.util.UUID;
 
-public class Country extends Domain {
+public class CountryDomain extends Domain {
 
     private String name;
 
-    public Country(UUID id, String name) {
+    public CountryDomain(UUID id, String name) {
         super(id);
         setName(name);
     }
