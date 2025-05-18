@@ -5,9 +5,11 @@ import co.parquisoft.application.secondaryports.mapper.parkings.CountryEntityMap
 import co.parquisoft.application.secondaryports.repository.parkings.CountryRepository;
 import co.parquisoft.application.usecase.parkings.country.GetCountry;
 import co.parquisoft.domain.parkings.CountryDomain;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetCountryImpl implements GetCountry {
 
     private final CountryRepository countryRepository;

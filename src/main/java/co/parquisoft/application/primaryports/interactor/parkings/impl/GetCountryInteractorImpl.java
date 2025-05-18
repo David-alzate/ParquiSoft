@@ -5,9 +5,13 @@ import co.parquisoft.application.primaryports.interactor.parkings.GetCountryInte
 import co.parquisoft.application.primaryports.mapper.parkings.CountryDTOMapper;
 import co.parquisoft.application.usecase.parkings.country.GetCountry;
 import co.parquisoft.domain.parkings.CountryDomain;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class GetCountryInteractorImpl implements GetCountryInteractor {
 
     private final GetCountry getCountry;
