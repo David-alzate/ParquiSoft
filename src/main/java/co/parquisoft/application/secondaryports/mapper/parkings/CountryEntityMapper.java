@@ -1,7 +1,7 @@
 package co.parquisoft.application.secondaryports.mapper.parkings;
 
 import co.parquisoft.application.secondaryports.entity.parkings.CountryEntity;
-import co.parquisoft.domain.parkings.CountryDomain;
+import co.parquisoft.domain.parkings.country.CountryDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

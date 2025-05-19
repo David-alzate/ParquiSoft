@@ -4,7 +4,7 @@ import co.parquisoft.application.primaryports.dto.parkings.CountryDTO;
 import co.parquisoft.application.primaryports.interactor.parkings.GetCountryInteractor;
 import co.parquisoft.application.primaryports.mapper.parkings.CountryDTOMapper;
 import co.parquisoft.application.usecase.parkings.country.GetCountry;
-import co.parquisoft.domain.parkings.CountryDomain;
+import co.parquisoft.domain.parkings.country.CountryDomain;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

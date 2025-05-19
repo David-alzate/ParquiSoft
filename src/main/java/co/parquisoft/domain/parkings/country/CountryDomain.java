@@ -1,4 +1,4 @@
-package co.parquisoft.domain.parkings;
+package co.parquisoft.domain.parkings.country;
 
 import co.parquisoft.domain.Domain;
 

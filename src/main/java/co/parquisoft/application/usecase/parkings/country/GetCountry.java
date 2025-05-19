@@ -1,7 +1,7 @@
 package co.parquisoft.application.usecase.parkings.country;
 
 import co.parquisoft.application.usecase.UseCaseWithoutInput;
-import co.parquisoft.domain.parkings.CountryDomain;
+import co.parquisoft.domain.parkings.country.CountryDomain;
 
 import java.util.List;
 
