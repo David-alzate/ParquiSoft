@@ -28,16 +28,16 @@ public final class VehicleTypeEntity {
         setName(name);
     }
 
-    public static IdTypeEntity create() {
-        return new IdTypeEntity();
+    public static VehicleTypeEntity create() {
+        return new VehicleTypeEntity();
     }
 
-    public static IdTypeEntity create(UUID id) {
-        return new IdTypeEntity(id, TextHelper.EMPTY);
+    public static VehicleTypeEntity create(UUID id) {
+        return new VehicleTypeEntity(id, TextHelper.EMPTY);
     }
 
-    public static IdTypeEntity create(UUID id, String name) {
-        return new IdTypeEntity(id, name);
+    public static VehicleTypeEntity create(UUID id, String name) {
+        return new VehicleTypeEntity(id, name);
     }
 
     public UUID getId() {
@@ -45,7 +45,7 @@ public final class VehicleTypeEntity {
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
     }
 
     public String getName() {
@@ -53,7 +53,7 @@ public final class VehicleTypeEntity {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = TextHelper.applyTrim(name);
     }
 
 }
