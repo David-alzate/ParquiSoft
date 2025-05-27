@@ -5,5 +5,5 @@ import co.parquisoft.application.primaryports.interactor.InteractorWithoutInput;
 
 import java.util.List;
 
-public interface GetCountryInteractor extends InteractorWithoutInput<List<CountryDTO>> {
+public interface GetCountriesInteractor extends InteractorWithoutInput<List<CountryDTO>> {
 }

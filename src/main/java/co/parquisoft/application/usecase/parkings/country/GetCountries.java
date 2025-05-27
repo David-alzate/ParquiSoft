@@ -5,5 +5,5 @@ import co.parquisoft.domain.parkings.country.CountryDomain;
 
 import java.util.List;
 
-public interface GetCountry extends UseCaseWithoutInput<List<CountryDomain>> {
+public interface GetCountries extends UseCaseWithoutInput<List<CountryDomain>> {
 }

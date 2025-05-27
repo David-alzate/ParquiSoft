@@ -1,7 +1,7 @@
 package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.CountryDTO;
-import co.parquisoft.application.primaryports.interactor.parkings.GetCountryInteractor;
+import co.parquisoft.application.primaryports.interactor.parkings.GetCountriesInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.parkings.CountryResponse;
@@ -17,16 +17,16 @@ import java.util.List;
 @RequestMapping("/api/v1/country")
 public class CountryController {
 
-    private final GetCountryInteractor getCountryInteractor;
+    private final GetCountriesInteractor getCountriesInteractor;
 
-    public CountryController(GetCountryInteractor getCountryInteractor) {
-        this.getCountryInteractor = getCountryInteractor;
+    public CountryController(GetCountriesInteractor getCountriesInteractor) {
+        this.getCountriesInteractor = getCountriesInteractor;
     }
 
     @GetMapping
     public ResponseEntity<CountryResponse> getIdTypes() {
         try {
-            List<CountryDTO> data = getCountryInteractor.execute();
+            List<CountryDTO> data = getCountriesInteractor.execute();
             var response = CountryResponse.build(List.of("Ciudades consultadas exitosamente"), data);
             return GenerateResponse.generateSuccessResponseWithData(response);
         } catch (final ParquiSoftException exception) {
