@@ -1,7 +1,7 @@
 package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.CountryDTO;
-import co.parquisoft.application.primaryports.interactor.parkings.GetCountriesInteractor;
+import co.parquisoft.application.primaryports.interactor.parkings.country.GetCountriesInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.parkings.CountryResponse;

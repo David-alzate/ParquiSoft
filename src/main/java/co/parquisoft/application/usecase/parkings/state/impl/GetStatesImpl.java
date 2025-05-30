@@ -5,12 +5,14 @@ import co.parquisoft.application.secondaryports.mapper.parkings.StateEntityMappe
 import co.parquisoft.application.secondaryports.repository.parkings.StateRepository;
 import co.parquisoft.application.usecase.parkings.state.GetStates;
 import co.parquisoft.domain.parkings.state.StateDomain;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetStatesImpl implements GetStates {
 
-    private StateRepository stateRepository;
+    private final StateRepository stateRepository;
 
     public GetStatesImpl(StateRepository stateRepository) {
         this.stateRepository = stateRepository;

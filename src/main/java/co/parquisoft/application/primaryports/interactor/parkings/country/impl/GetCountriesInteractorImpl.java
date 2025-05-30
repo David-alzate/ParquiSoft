@@ -1,7 +1,7 @@
-package co.parquisoft.application.primaryports.interactor.parkings.impl;
+package co.parquisoft.application.primaryports.interactor.parkings.country.impl;
 
 import co.parquisoft.application.primaryports.dto.parkings.CountryDTO;
-import co.parquisoft.application.primaryports.interactor.parkings.GetCountriesInteractor;
+import co.parquisoft.application.primaryports.interactor.parkings.country.GetCountriesInteractor;
 import co.parquisoft.application.primaryports.mapper.parkings.CountryDTOMapper;
 import co.parquisoft.application.usecase.parkings.country.GetCountries;
 import co.parquisoft.domain.parkings.country.CountryDomain;

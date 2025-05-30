@@ -1,4 +1,4 @@
-package co.parquisoft.application.primaryports.interactor.parkings;
+package co.parquisoft.application.primaryports.interactor.parkings.country;
 
 import co.parquisoft.application.primaryports.dto.parkings.CountryDTO;
 import co.parquisoft.application.primaryports.interactor.InteractorWithoutInput;
