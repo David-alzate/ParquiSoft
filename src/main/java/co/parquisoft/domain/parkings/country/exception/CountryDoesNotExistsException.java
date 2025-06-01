@@ -1,7 +1,6 @@
 package co.parquisoft.domain.parkings.country.exception;
 
 import co.parquisoft.crosscutting.exception.RuleParquiSoftException;
-import co.parquisoft.domain.commons.idtype.exception.IdTypeDoesExistsException;
 
 public class CountryDoesNotExistsException extends RuleParquiSoftException {
 
@@ -11,8 +10,8 @@ public class CountryDoesNotExistsException extends RuleParquiSoftException {
         super(userMessage, userMessage, new Exception());
     }
 
-    public static IdTypeDoesExistsException create() {
+    public static CountryDoesNotExistsException create() {
         var userMessage = "La ciudad no existe";
-        return new IdTypeDoesExistsException(userMessage);
+        return new CountryDoesNotExistsException(userMessage);
     }
 }
