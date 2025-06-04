@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "state")
+@Table(name = "city")
 public class CityEntity {
 
     @Id
