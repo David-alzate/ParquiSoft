@@ -2,9 +2,7 @@ package co.parquisoft.application.secondaryports.entity.parkings;
 
 import co.parquisoft.crosscutting.helpers.TextHelper;
 import co.parquisoft.crosscutting.helpers.UUIDHelper;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -13,6 +11,7 @@ import java.util.UUID;
 public class ParkingEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
 

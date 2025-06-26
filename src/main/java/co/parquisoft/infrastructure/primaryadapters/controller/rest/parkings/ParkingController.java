@@ -2,14 +2,14 @@ package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.ParkingDTO;
 import co.parquisoft.application.primaryports.interactor.parkings.parking.GetParkingsInteractor;
+import co.parquisoft.application.primaryports.interactor.parkings.parking.RegisterNewParkingInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
+import co.parquisoft.infrastructure.primaryadapters.controller.response.GenericResponse;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.parkings.ParkingResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +18,15 @@ import java.util.List;
 public class ParkingController {
 
     private final GetParkingsInteractor getParkingsInteractor;
+    private final RegisterNewParkingInteractor registerNewParkingInteractor;
 
-    public ParkingController(GetParkingsInteractor getParkingsInteractor) {
+    public ParkingController(GetParkingsInteractor getParkingsInteractor, RegisterNewParkingInteractor registerNewParkingInteractor) {
         this.getParkingsInteractor = getParkingsInteractor;
+        this.registerNewParkingInteractor = registerNewParkingInteractor;
     }
 
     @GetMapping
-    public ResponseEntity<ParkingResponse> getIdTypes() {
+    public ResponseEntity<ParkingResponse> getParkings() {
         try {
             List<ParkingDTO> data = getParkingsInteractor.execute();
             var response = ParkingResponse.build(List.of("Parqueaderos consultadas exitosamente"), data);
@@ -38,4 +40,17 @@ public class ParkingController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping
+    public ResponseEntity<GenericResponse> getIdTypes(@RequestBody ParkingDTO parking) {
+        try {
+            registerNewParkingInteractor.execute(parking);
+            return GenerateResponse.generateSuccessResponse(List.of("Se ha agregado el parqueadero exitosamente"));
+        } catch (final ParquiSoftException exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
+        } catch (final Exception exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo el registro del parqueadero"));
+        }
+    }
+
 }
