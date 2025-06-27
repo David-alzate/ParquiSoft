@@ -5,9 +5,11 @@ import co.parquisoft.application.secondaryports.mapper.parkings.CityEntityMapper
 import co.parquisoft.application.secondaryports.repository.parkings.CityRepository;
 import co.parquisoft.application.usecase.parkings.city.GetCities;
 import co.parquisoft.domain.parkings.city.CityDomain;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GetCitiesImpl implements GetCities {
 
     private final CityRepository cityRepository;
