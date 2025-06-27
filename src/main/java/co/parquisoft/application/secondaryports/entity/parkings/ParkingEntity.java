@@ -11,7 +11,6 @@ import java.util.UUID;
 public class ParkingEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
 
