@@ -1,7 +1,6 @@
 package co.parquisoft.application.secondaryports.mapper.parkings;
 
 import co.parquisoft.application.secondaryports.entity.parkings.ParkingEntity;
-import co.parquisoft.domain.parkings.city.CityDomain;
 import co.parquisoft.domain.parkings.parking.ParkingDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -15,5 +14,5 @@ public interface ParkingEntityMapper {
 
     ParkingEntity toEntity(ParkingDomain domain);
 
-    List<CityDomain> toDomainCollection(List<ParkingEntity> entities);
+    List<ParkingDomain> toDomainCollection(List<ParkingEntity> entities);
 }
