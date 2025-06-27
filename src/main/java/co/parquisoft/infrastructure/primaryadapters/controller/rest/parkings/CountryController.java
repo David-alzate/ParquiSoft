@@ -27,13 +27,13 @@ public class CountryController {
     public ResponseEntity<CountryResponse> getIdTypes() {
         try {
             List<CountryDTO> data = getCountriesInteractor.execute();
-            var response = CountryResponse.build(List.of("Ciudades consultadas exitosamente"), data);
+            var response = CountryResponse.build(List.of("Paises consultadas exitosamente"), data);
             return GenerateResponse.generateSuccessResponseWithData(response);
         } catch (final ParquiSoftException exception) {
             var response = CountryResponse.build(List.of(exception.getUserMessage()), List.of());
             return GenerateResponse.generateBadRequestResponseWithData(response);
         } catch (final Exception exception) {
-            var userMessage = "Se ha presentado un problema tratando de consultar las ciudades";
+            var userMessage = "Se ha presentado un problema tratando de consultar los Paises";
             var response = CountryResponse.build(List.of(userMessage), List.of());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
