@@ -1,6 +1,7 @@
 package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.ParkingDTO;
+import co.parquisoft.application.primaryports.interactor.parkings.parking.DeleteParkingInteractor;
 import co.parquisoft.application.primaryports.interactor.parkings.parking.GetParkingsInteractor;
 import co.parquisoft.application.primaryports.interactor.parkings.parking.RegisterNewParkingInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/parking")
@@ -19,10 +21,12 @@ public class ParkingController {
 
     private final GetParkingsInteractor getParkingsInteractor;
     private final RegisterNewParkingInteractor registerNewParkingInteractor;
+    private final DeleteParkingInteractor deleteParkingInteractor;
 
-    public ParkingController(GetParkingsInteractor getParkingsInteractor, RegisterNewParkingInteractor registerNewParkingInteractor) {
+    public ParkingController(GetParkingsInteractor getParkingsInteractor, RegisterNewParkingInteractor registerNewParkingInteractor, DeleteParkingInteractor deleteParkingInteractor) {
         this.getParkingsInteractor = getParkingsInteractor;
         this.registerNewParkingInteractor = registerNewParkingInteractor;
+        this.deleteParkingInteractor = deleteParkingInteractor;
     }
 
     @GetMapping
@@ -50,6 +54,18 @@ public class ParkingController {
             return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
         } catch (final Exception exception) {
             return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo el registro del parqueadero"));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GenericResponse> delete(@PathVariable UUID id) {
+        try {
+            deleteParkingInteractor.execute(id);
+            return GenerateResponse.generateSuccessResponse(List.of("Se ha eliminado el parqueadero exitosamente"));
+        } catch (final ParquiSoftException exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
+        } catch (final Exception exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo la eliminacion del parqueadero"));
         }
     }
 
