@@ -24,7 +24,7 @@ public class CityController {
     }
 
     @GetMapping
-    public ResponseEntity<CityResponse> getIdTypes() {
+    public ResponseEntity<CityResponse> getCities() {
         try {
             List<CityDTO> data = getCitiesInteractor.execute();
             var response = CityResponse.build(List.of("Ciudades consultadas exitosamente"), data);

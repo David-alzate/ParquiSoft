@@ -24,7 +24,7 @@ public class StateController {
     }
 
     @GetMapping
-    public ResponseEntity<StateResponse> getIdTypes() {
+    public ResponseEntity<StateResponse> getStates() {
         try {
             List<StateDTO> data = getStatesInteractor.execute();
             var response = StateResponse.build(List.of("Departamentos consultados exitosamente"), data);

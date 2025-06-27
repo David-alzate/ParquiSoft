@@ -24,7 +24,7 @@ public class CountryController {
     }
 
     @GetMapping
-    public ResponseEntity<CountryResponse> getIdTypes() {
+    public ResponseEntity<CountryResponse> getCountries() {
         try {
             List<CountryDTO> data = getCountriesInteractor.execute();
             var response = CountryResponse.build(List.of("Paises consultadas exitosamente"), data);

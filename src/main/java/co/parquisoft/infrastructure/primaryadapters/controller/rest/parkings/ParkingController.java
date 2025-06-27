@@ -42,7 +42,7 @@ public class ParkingController {
     }
 
     @PostMapping
-    public ResponseEntity<GenericResponse> getIdTypes(@RequestBody ParkingDTO parking) {
+    public ResponseEntity<GenericResponse> registerNewParking(@RequestBody ParkingDTO parking) {
         try {
             registerNewParkingInteractor.execute(parking);
             return GenerateResponse.generateSuccessResponse(List.of("Se ha agregado el parqueadero exitosamente"));
