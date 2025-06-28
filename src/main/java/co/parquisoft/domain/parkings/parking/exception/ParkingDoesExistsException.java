@@ -10,8 +10,8 @@ public class ParkingDoesExistsException extends RuleParquiSoftException {
         super(userMessage, userMessage, new Exception());
     }
 
-    public static ParkingIdIsDefaultValueException create() {
+    public static ParkingDoesExistsException create() {
         var userMessage = "El parqueadero ya existe";
-        return new ParkingIdIsDefaultValueException(userMessage);
+        return new ParkingDoesExistsException(userMessage);
     }
 }
