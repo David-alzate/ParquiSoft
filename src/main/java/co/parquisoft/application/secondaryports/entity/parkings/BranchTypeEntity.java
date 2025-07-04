@@ -7,34 +7,34 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "parking")
-public class ParkingEntity {
+@Table(name = "branch_type")
+public class BranchTypeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String name;
 
-    public ParkingEntity() {
+    public BranchTypeEntity() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
     }
 
-    public ParkingEntity(UUID id, String name) {
+    public BranchTypeEntity(UUID id, String name) {
         setId(id);
         setName(name);
     }
 
-    public static ParkingEntity create(UUID id, String name) {
-        return new ParkingEntity(id, name);
+    public static BranchTypeEntity create(UUID id, String name) {
+        return new BranchTypeEntity(id, name);
     }
 
-    public static ParkingEntity create(UUID id) {
-        return new ParkingEntity(id, TextHelper.EMPTY);
+    public static BranchTypeEntity create(UUID id) {
+        return new BranchTypeEntity(id, TextHelper.EMPTY);
     }
 
-    public static ParkingEntity create() {
-        return new ParkingEntity();
+    public static BranchTypeEntity create() {
+        return new BranchTypeEntity();
     }
 
     public UUID getId() {

@@ -1,40 +1,31 @@
-package co.parquisoft.application.secondaryports.entity.parkings;
+package co.parquisoft.application.primaryports.dto.parkings;
 
 import co.parquisoft.crosscutting.helpers.TextHelper;
 import co.parquisoft.crosscutting.helpers.UUIDHelper;
-import jakarta.persistence.*;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "parking")
-public class ParkingEntity {
+public class BranchTypeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String name;
 
-    public ParkingEntity() {
+    public BranchTypeDTO() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
     }
 
-    public ParkingEntity(UUID id, String name) {
+    public BranchTypeDTO(UUID id, String name) {
         setId(id);
         setName(name);
     }
 
-    public static ParkingEntity create(UUID id, String name) {
-        return new ParkingEntity(id, name);
+    public static BranchTypeDTO create(UUID id, String name) {
+        return new BranchTypeDTO(id, name);
     }
 
-    public static ParkingEntity create(UUID id) {
-        return new ParkingEntity(id, TextHelper.EMPTY);
-    }
-
-    public static ParkingEntity create() {
-        return new ParkingEntity();
+    public static BranchTypeDTO create() {
+        return new BranchTypeDTO();
     }
 
     public UUID getId() {
