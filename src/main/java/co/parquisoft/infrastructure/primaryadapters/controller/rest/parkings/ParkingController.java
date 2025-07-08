@@ -49,7 +49,7 @@ public class ParkingController {
     public ResponseEntity<GenericResponse> registerNewParking(@RequestBody ParkingDTO parking) {
         try {
             registerNewParkingInteractor.execute(parking);
-            return GenerateResponse.generateSuccessResponse(List.of("Se ha agregado el parqueadero exitosamente"));
+            return GenerateResponse.generateSuccessResponse(List.of("Se ha registrado el parqueadero exitosamente"));
         } catch (final ParquiSoftException exception) {
             return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
         } catch (final Exception exception) {
