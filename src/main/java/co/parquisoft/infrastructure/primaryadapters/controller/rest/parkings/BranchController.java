@@ -2,14 +2,14 @@ package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.BranchDTO;
 import co.parquisoft.application.primaryports.interactor.parkings.branch.GetBranchsInteractor;
+import co.parquisoft.application.primaryports.interactor.parkings.branch.RegisterNewBranchInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.GenerateResponse;
+import co.parquisoft.infrastructure.primaryadapters.controller.response.GenericResponse;
 import co.parquisoft.infrastructure.primaryadapters.controller.response.parkings.BranchResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +18,11 @@ import java.util.List;
 public class BranchController {
 
     private final GetBranchsInteractor getBranchsInteractor;
+    private final RegisterNewBranchInteractor registerNewBranchInteractor;
 
-    public BranchController(GetBranchsInteractor getBranchsInteractor) {
+    public BranchController(GetBranchsInteractor getBranchsInteractor, RegisterNewBranchInteractor registerNewBranchInteractor) {
         this.getBranchsInteractor = getBranchsInteractor;
+        this.registerNewBranchInteractor = registerNewBranchInteractor;
     }
 
     @GetMapping
@@ -36,6 +38,18 @@ public class BranchController {
             var userMessage = "Se ha presentado un problema tratando de consultar las Sedes";
             var response = BranchResponse.build(List.of(userMessage), List.of());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<GenericResponse> registerNewParking(@RequestBody BranchDTO branch) {
+        try {
+            registerNewBranchInteractor.execute(branch);
+            return GenerateResponse.generateSuccessResponse(List.of("Se ha registrado la sede exitosamente"));
+        } catch (final ParquiSoftException exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
+        } catch (final Exception exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo el registro la sede"));
         }
     }
 }
