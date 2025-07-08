@@ -1,6 +1,7 @@
 package co.parquisoft.infrastructure.primaryadapters.controller.rest.parkings;
 
 import co.parquisoft.application.primaryports.dto.parkings.BranchDTO;
+import co.parquisoft.application.primaryports.interactor.parkings.branch.DeleteBranchInteractor;
 import co.parquisoft.application.primaryports.interactor.parkings.branch.GetBranchsInteractor;
 import co.parquisoft.application.primaryports.interactor.parkings.branch.RegisterNewBranchInteractor;
 import co.parquisoft.crosscutting.exception.ParquiSoftException;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/branch")
@@ -19,10 +21,12 @@ public class BranchController {
 
     private final GetBranchsInteractor getBranchsInteractor;
     private final RegisterNewBranchInteractor registerNewBranchInteractor;
+    private final DeleteBranchInteractor deleteBranchInteractor;
 
-    public BranchController(GetBranchsInteractor getBranchsInteractor, RegisterNewBranchInteractor registerNewBranchInteractor) {
+    public BranchController(GetBranchsInteractor getBranchsInteractor, RegisterNewBranchInteractor registerNewBranchInteractor, DeleteBranchInteractor deleteBranchInteractor) {
         this.getBranchsInteractor = getBranchsInteractor;
         this.registerNewBranchInteractor = registerNewBranchInteractor;
+        this.deleteBranchInteractor = deleteBranchInteractor;
     }
 
     @GetMapping
@@ -50,6 +54,18 @@ public class BranchController {
             return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
         } catch (final Exception exception) {
             return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo el registro la sede"));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GenericResponse> delete(@PathVariable UUID id) {
+        try {
+            deleteBranchInteractor.execute(id);
+            return GenerateResponse.generateSuccessResponse(List.of("Se ha eliminado la sede exitosamente"));
+        } catch (final ParquiSoftException exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of(exception.getUserMessage()));
+        } catch (final Exception exception) {
+            return GenerateResponse.generateBadRequestResponse(List.of("Se ha presendatado un problema tratando de llevar a cabo la eliminacion de la sede"));
         }
     }
 }
