@@ -5,27 +5,27 @@ import co.parquisoft.crosscutting.helpers.UUIDHelper;
 
 import java.util.UUID;
 
-public class RateType {
+public class RateTypeDTO {
 
     private UUID id;
     private String name;
 
-    public RateType() {
+    public RateTypeDTO() {
         setId(UUIDHelper.getDefault());
         setName(TextHelper.EMPTY);
     }
 
-    public RateType(UUID id, String name) {
+    public RateTypeDTO(UUID id, String name) {
         setId(id);
         setName(name);
     }
 
-    public static RateType create(UUID id, String name) {
-        return new RateType(id, name);
+    public static RateTypeDTO create(UUID id, String name) {
+        return new RateTypeDTO(id, name);
     }
 
-    public static RateType create() {
-        return new RateType();
+    public static RateTypeDTO create() {
+        return new RateTypeDTO();
     }
 
     public UUID getId() {
