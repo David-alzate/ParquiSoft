@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "branch_type")
+@Table(name = "rate_type")
 public class RateTypeEntity {
 
     @Id
