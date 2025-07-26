@@ -4,5 +4,5 @@ import co.parquisoft.domain.DomainRule;
 
 import java.util.UUID;
 
-public interface VehicleDoesNotExitsRule extends DomainRule<UUID> {
+public interface VehicleDoesExistsRule extends DomainRule<UUID> {
 }
