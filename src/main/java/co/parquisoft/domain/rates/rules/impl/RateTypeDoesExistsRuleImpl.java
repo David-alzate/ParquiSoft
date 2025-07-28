@@ -2,13 +2,13 @@ package co.parquisoft.domain.rates.rules.impl;
 
 import co.parquisoft.application.secondaryports.repository.rate.RateTypeRepository;
 import co.parquisoft.domain.rates.exceptions.RateTypeDoesNotExitsException;
-import co.parquisoft.domain.rates.rules.RateTypeDoesExitsRule;
+import co.parquisoft.domain.rates.rules.RateTypeDoesExistsRule;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class RateTypeDoesExistsRuleImpl implements RateTypeDoesExitsRule {
+public class RateTypeDoesExistsRuleImpl implements RateTypeDoesExistsRule {
 
     private final RateTypeRepository rateTypeRepository;
 
